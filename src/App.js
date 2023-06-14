@@ -1,24 +1,26 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import Navbar from './Navbar';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Namespaces from './Namespaces';
+import ReleaseInfo from './ReleaseInfo';
+import HelmRelease from './HelmRelease';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <Navbar />
+        <div className="App-intro">
+          <Routes>
+            <Route path="/" />
+            <Route path="/namespaces" element={<Namespaces />} />
+            <Route path="/helm-releases" element={<HelmRelease />} />
+            <Route path="/release-info" element={<ReleaseInfo />} />
+          </Routes>
+        </div>
+      </div>
+    </Router>
   );
 }
 
